@@ -24,6 +24,6 @@ MyStr::MyStr()
 MyStr::MyStr(const char* str)
 {
 	this->size = strlen(str);
-	this->str = new char[size];
+	this->str = new char[size+1];
 	std::strcpy(this->str, str);
 }
