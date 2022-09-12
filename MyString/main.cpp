@@ -9,6 +9,7 @@ public:
 	MyStr();
 	MyStr(const char* str);
 	MyStr(const int size);
+	~MyStr();
 };
 
 int main() {
@@ -33,4 +34,10 @@ MyStr::MyStr(const int size)
 {
 	this->size = size;
 	this->str = new char[size];
+}
+
+MyStr::~MyStr()
+{
+	delete str;
+	delete[] str;
 }
