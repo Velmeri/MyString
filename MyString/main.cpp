@@ -8,6 +8,7 @@ class MyStr {
 public:
 	MyStr();
 	MyStr(const char* str);
+	MyStr(const int size);
 };
 
 int main() {
@@ -26,4 +27,10 @@ MyStr::MyStr(const char* str)
 	this->size = strlen(str);
 	this->str = new char[size+1];
 	std::strcpy(this->str, str);
+}
+
+MyStr::MyStr(const int size)
+{
+	this->size = size;
+	this->str = new char[size];
 }
