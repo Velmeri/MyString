@@ -19,6 +19,7 @@ public:
 	int MyStrLen();
 	void MyStrCat(MyStr & b);
 	void MyDelChr(char c);
+	int MyStrCmp(MyStr & b);
 };
 
 int main() {
@@ -128,4 +129,13 @@ void MyStr::MyDelChr(char c)
 	delete[] str;
 	str = new char[size+1];
 	strcpy_s(str, size, TempStr);
+}
+
+int MyStr::MyStrCmp(MyStr& b)
+{
+	if (size < b.size)
+		return -1;
+	if (size > b.size)
+		return 1;
+	return 0;
 }
