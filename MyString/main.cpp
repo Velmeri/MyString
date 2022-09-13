@@ -20,7 +20,11 @@ public:
 	void MyStrCat(MyStr & b);
 	void MyDelChr(char c);
 	int MyStrCmp(MyStr & b);
+
+	static int count;
 };
+
+int MyStr::count = 0;
 
 int main() {
 
@@ -32,6 +36,8 @@ MyStr::MyStr()
 {
 	size = 80;
 	str = new char[size];
+	
+	count++;
 }
 
 MyStr::MyStr(const char* str)
@@ -39,18 +45,24 @@ MyStr::MyStr(const char* str)
 	this->size = strlen(str);
 	this->str = new char[size + 1];
 	strcpy_s(this->str, size, str);
+
+	count++;
 }
 
 MyStr::MyStr(const int size)
 {
 	this->size = size;
 	this->str = new char[size];
+
+	count++;
 }
 
 MyStr::~MyStr()
 {
 	delete str;
 	delete[] str;
+
+	count--;
 }
 
 void MyStr::Print()
