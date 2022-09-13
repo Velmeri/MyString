@@ -10,9 +10,14 @@ public:
 	MyStr(const char* str);
 	MyStr(const int size);
 	~MyStr();
+
+	void Print();
+	void Inpute();
 };
 
 int main() {
+	MyStr str1("Hello WORLD");
+	str1.Print();
 	
 	return 0;
 }
@@ -26,8 +31,8 @@ MyStr::MyStr()
 MyStr::MyStr(const char* str)
 {
 	this->size = strlen(str);
-	this->str = new char[size+1];
-	std::strcpy(this->str, str);
+	this->str = new char[size + 1];
+	strcpy(this->str, str);
 }
 
 MyStr::MyStr(const int size)
@@ -40,4 +45,17 @@ MyStr::~MyStr()
 {
 	delete str;
 	delete[] str;
+}
+
+void MyStr::Print()
+{
+	if(size != 0)
+		cout << str;
+}
+
+void MyStr::Inpute()
+{
+	char* buf = new char[size];
+	cin.getline(buf, size);
+	strcpy_s(this->str, size, buf);
 }
