@@ -15,6 +15,7 @@ public:
 	void Inpute();
 	void MyStrcpy(MyStr& obj);
 	bool MyStrStr(const char* str2);
+	int MyChr(char c);
 };
 
 int main() {
@@ -80,4 +81,12 @@ bool MyStr::MyStrStr(const char* str2)
 				return 1;
 		}
 	return 0;
+}
+
+int MyStr::MyChr(char c)
+{
+	for (int i = 0; i < size; i++)
+		if (str[i] == c)
+			return i;
+	return -1;
 }
