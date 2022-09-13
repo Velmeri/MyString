@@ -16,8 +16,7 @@ public:
 };
 
 int main() {
-	MyStr str1("Hello WORLD");
-	str1.Print();
+
 	
 	return 0;
 }
@@ -32,7 +31,7 @@ MyStr::MyStr(const char* str)
 {
 	this->size = strlen(str);
 	this->str = new char[size + 1];
-	strcpy(this->str, str);
+	strcpy_s(this->str, size, str);
 }
 
 MyStr::MyStr(const int size)
