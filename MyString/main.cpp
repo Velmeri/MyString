@@ -16,6 +16,9 @@ public:
 	void MyStrcpy(MyStr& obj);
 	bool MyStrStr(const char* str2);
 	int MyChr(char c);
+	int MyStrLen();
+	void MyStrCat(MyStr & b);
+	void MyDelChr(char c);
 };
 
 int main() {
@@ -89,4 +92,40 @@ int MyStr::MyChr(char c)
 		if (str[i] == c)
 			return i;
 	return -1;
+}
+
+int MyStr::MyStrLen()
+{
+	return size;
+}
+
+void MyStr::MyStrCat(MyStr& b)
+{
+	char* TempStr = new char[size+1];
+	strcpy_s(TempStr, size, str);
+	size += b.size;
+	delete[] str;
+	str = new char[size+1];
+	for (int i = 0; i < size - b.size; i++)
+		str[i] = TempStr[i];
+	for (int i = size - b.size; i < b.size; i++)
+		str[i] = b.str[i - b.size];
+}
+
+void MyStr::MyDelChr(char c)
+{
+	int x = 0;
+	char* TempStr = new char[size+1];
+	strcpy_s(TempStr, size, str);
+	for (int i = 0; i < size; i++) {
+		if (str[i] == c) {
+			size--;
+			x++;
+		}
+		else
+			TempStr[i - x] = str[i];
+	}
+	delete[] str;
+	str = new char[size+1];
+	strcpy_s(str, size, TempStr);
 }
