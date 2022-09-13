@@ -13,6 +13,8 @@ public:
 
 	void Print();
 	void Inpute();
+	void MyStrcpy(MyStr& obj);
+	bool MyStrStr(const char* str2);
 };
 
 int main() {
@@ -24,7 +26,7 @@ int main() {
 MyStr::MyStr()
 {
 	size = 80;
-	str = new char[80];
+	str = new char[size];
 }
 
 MyStr::MyStr(const char* str)
@@ -57,4 +59,25 @@ void MyStr::Inpute()
 	char* buf = new char[size];
 	cin.getline(buf, size);
 	strcpy_s(this->str, size, buf);
+}
+
+void MyStr::MyStrcpy(MyStr& obj)
+{
+	if (obj.size > size)
+		strcpy_s(obj.str, size, str);
+}
+
+bool MyStr::MyStrStr(const char* str2)
+{
+	int size2 = 0;
+	for (int i = 0; str2[i] != '\0'; i++)
+		size2++;
+	for (int i = 0; i < size; i++)
+		for (int j = 0; j < size2; j++) {
+			if (str2[j] != str[i])
+				break;
+			else if (j == size2 - 1)
+				return 1;
+		}
+	return 0;
 }
